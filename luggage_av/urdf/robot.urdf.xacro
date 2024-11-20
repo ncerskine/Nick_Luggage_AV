@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
+
+    <xacro:include filename="drivebase.xacro" />
+    <xacro:include filename="lidar.xacro" />
+    <!-- TODO: Conditionally include either xacro -->
+    <xacro:if value="$(arg sim_mode)">
+        <xacro:include filename="gz_ros2_control.xacro" /> 
+    </xacro:if> 
+     <xacro:unless value="$(arg sim_mode)">
+        <xacro:include filename="ros2_control.xacro" />
+    </xacro:unless>
+     
+</robot>

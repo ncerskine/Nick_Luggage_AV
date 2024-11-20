@@ -1,0 +1,9 @@
+luggage_av:
+  robot_state_publisher:
+    ros__parameters:
+      # robot_description: # requires xacro processing, see robot_state_publisher.launch.py
+      publish_frequency: 50.0 # Hz
+      ignore_timestamp: False
+      frame_prefix: "luggage_av/"
+
+

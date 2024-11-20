@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="drive_wheel_radius" value="0.17" /> <!-- TODO: Calibrate Drive wheel radius -->
+    <xacro:property name="drive_wheel_thickness" value="0.075" />
+    <xacro:property name="caster_wheel_radius" value="0.075" />
+    <xacro:property name="caster_wheel_thickness" value="0.05" />
+    <xacro:property name="caster_wheel_X_offset" value="0.05" />
+    <xacro:property name="caster_wheel_Z_offset" value="0.09" />
+    
+    <xacro:property name="chassis_width" value="0.43" />
+    <xacro:property name="chassis_length" value="0.55" />
+    <xacro:property name="chassis_height" value="0.25" />
+    <xacro:property name="chassis_X_offset" value="-0.1" />
+    <xacro:property name="chassis_Z_offset" value="0.08" />
+    <xacro:property name="drive_wheels_Y_spacing" value="0.46" />
+    <xacro:property name="caster_wheels_F_Y_spacing" value="0.52" />
+    <xacro:property name="caster_wheels_R_Y_spacing" value="0.405" />
+    <xacro:property name="caster_wheels_F_X_offset" value="0.35" />
+    <xacro:property name="caster_wheels_R_X_offset" value="-0.4" />
+    
+</robot>

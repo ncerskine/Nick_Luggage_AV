@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- Imports -->
+    <xacro:include filename="params.xacro" />
+    <xacro:include filename="wheels.xacro" />
+    <xacro:include filename="inertial_macros.xacro" />
+
+    <!-- Materials -->
+    <material name="plastic_shell">
+        <color rgba="0 0 1 1" />
+    </material>
+
+    <!-- Base link -->
+    <link name="base_footprint"></link>
+    <link name="base_link"></link>
+
+    <joint name="footprint_joint" type="fixed">  
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 ${drive_wheel_radius}"/>
+    </joint>
+
+    <!-- Chassis -->
+    <link name="chassis">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+            </geometry>
+            <material name="plastic_shell"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="50.0" x="${chassis_length}" y="${chassis_width}" z="${chassis_height}">
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </xacro:inertial_box>
+    </link>
+
+    <joint name="chassis_joint" type="fixed">  
+        <parent link="base_link"/>
+        <child link="chassis"/>
+        <origin xyz="${chassis_X_offset} 0 ${chassis_height/2 - drive_wheel_radius + chassis_Z_offset}"/>
+    </joint>
+    
+    <!-- Drive Wheels -->
+    <xacro:drive_wheel name="drive_wheel_L"></xacro:drive_wheel>
+
+    <joint name="drive_wheel_L_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="drive_wheel_L"/>
+        <origin xyz="0 ${drive_wheels_Y_spacing/2} 0" rpy="0 0 0" />
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <xacro:drive_wheel name="drive_wheel_R"></xacro:drive_wheel>
+
+    <joint name="drive_wheel_R_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="drive_wheel_R"/>
+        <origin xyz="0 -${drive_wheels_Y_spacing/2} 0" rpy="${pi} 0 0" />
+        <axis xyz="0 -1 0"/>
+    </joint>
+
+    <!-- Caster Wheels -->
+    <xacro:caster_wheel name="caster_wheel_FL"></xacro:caster_wheel>
+
+    <joint name="caster_wheel_FL_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="caster_wheel_FL"/>
+        <origin xyz="${caster_wheels_F_X_offset} ${caster_wheels_F_Y_spacing/2} ${-drive_wheel_radius + caster_wheel_radius + caster_wheel_Z_offset + 0.01}" rpy="0 0 0" />
+    </joint>
+
+    <xacro:caster_wheel name="caster_wheel_FR"></xacro:caster_wheel>
+
+    <joint name="caster_wheel_FR_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="caster_wheel_FR"/>
+        <origin xyz="${caster_wheels_F_X_offset} -${caster_wheels_F_Y_spacing/2} ${-drive_wheel_radius + caster_wheel_radius + caster_wheel_Z_offset + 0.01}" rpy="0 0 0" />
+    </joint>
+
+    <xacro:caster_wheel name="caster_wheel_RL"></xacro:caster_wheel>
+
+    <joint name="caster_wheel_RL_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="caster_wheel_RL"/>
+        <origin xyz="${caster_wheels_R_X_offset} ${caster_wheels_R_Y_spacing/2} ${-drive_wheel_radius + caster_wheel_radius + caster_wheel_Z_offset + 0.01}" rpy="0 0 0" />
+    </joint>
+
+    <xacro:caster_wheel name="caster_wheel_RR"></xacro:caster_wheel>
+
+    <joint name="caster_wheel_RR_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="caster_wheel_RR"/>
+        <origin xyz="${caster_wheels_R_X_offset} -${caster_wheels_R_Y_spacing/2} ${-drive_wheel_radius + caster_wheel_radius + caster_wheel_Z_offset + 0.01}" rpy="0 0 0" />
+    </joint>
+
+</robot>

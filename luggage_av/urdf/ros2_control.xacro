@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="params.xacro" />
+
+    <ros2_control name="DriveBaseSystem" type="system">
+        <hardware>
+            <plugin>luggage_av/LuggageAVHardawreInterface</plugin>
+            <param name="device">/dev/ttyACM0</param>
+            <param name="linear_velocity_min">-3.233</param>
+            <param name="linear_velocity_max">3.233</param>
+            <param name="hardware_command_min">-8312</param>
+            <param name="hardware_command_max">8312</param>
+        </hardware>
+        <joint name="drive_wheel_L_joint">
+            <command_interface name="velocity">
+                <param name="min">-1.0</param>
+                <param name="max">1.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        <joint name="drive_wheel_R_joint">
+            <command_interface name="velocity">
+                <param name="min">-1.0</param>
+                <param name="max">1.0</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+    </ros2_control>
+
+</robot>

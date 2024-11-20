@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package carry_my_luggage;
+
+message WheelCommands {
+    sint32 velocity_left = 1;
+    sint32 velocity_right = 2;
+}

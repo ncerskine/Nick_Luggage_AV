@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package carry_my_luggage;
+
+message WheelStates {
+    sint32 position_left = 1;
+    sint32 position_right = 2;
+    float velocity_left = 3;
+    float velocity_right = 4;
+}

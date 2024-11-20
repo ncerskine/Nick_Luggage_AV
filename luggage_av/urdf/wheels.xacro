@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- Imports -->
+    <xacro:include filename="params.xacro" />
+
+    <!-- Materials -->
+    <material name="wheel_rubber">
+        <color rgba="0.8 0.8 0.8 1" />
+    </material>
+    
+    <!-- Macros -->
+    <!-- Drive Wheels -->
+    <xacro:macro name="drive_wheel" params="name">
+        <link name="${name}">
+            <visual>
+                <origin xyz="0 ${drive_wheel_thickness/2} 0" rpy="-${pi/2} 0 0" />
+                <geometry>
+                    <cylinder radius="${drive_wheel_radius}" length="${drive_wheel_thickness}" />
+                </geometry>
+                <material name="wheel_rubber" />
+            </visual>
+            <collision>
+                <origin xyz="0 ${drive_wheel_thickness/2} 0" rpy="-${pi/2} 0 0" />
+                <geometry>
+                    <cylinder radius="${drive_wheel_radius}" length="${drive_wheel_thickness}" />
+                </geometry>
+            </collision>
+            <xacro:inertial_cylinder mass="2.0" radius="${drive_wheel_radius}" length="${drive_wheel_thickness}">
+                <origin xyz="0 ${drive_wheel_thickness/2} 0" rpy="-${pi/2} 0 0" />
+            </xacro:inertial_cylinder>
+        </link>
+    </xacro:macro>       
+
+    <!-- Caster Wheels --> 
+    <xacro:macro name="caster_wheel" params="name">
+        <link name="${name}">
+            <visual>
+                <origin xyz="-${caster_wheel_X_offset} 0 -${caster_wheel_Z_offset}" rpy="-${pi/2} 0 0" />
+                <geometry>
+                    <cylinder radius="${caster_wheel_radius}" length="${caster_wheel_thickness}"/>
+                </geometry>
+                <material name="wheel_rubber" />
+            </visual>
+            <collision>
+                <origin xyz="-${caster_wheel_X_offset} 0 -${caster_wheel_Z_offset}" rpy="-${pi/2} 0 0" />
+                <geometry>
+                    <cylinder radius="${caster_wheel_radius}" length="${caster_wheel_thickness}"/>
+                </geometry>
+            </collision>
+            <xacro:inertial_cylinder mass="1.0" radius="${caster_wheel_radius}" length="${caster_wheel_thickness}">
+                <origin xyz="-${caster_wheel_X_offset} 0 -${caster_wheel_Z_offset}" rpy="-${pi/2} 0 0" />
+            </xacro:inertial_cylinder>
+        </link>
+    </xacro:macro>       
+</robot>

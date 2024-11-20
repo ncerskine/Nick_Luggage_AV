@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>luggage_av</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="rrytw025@uottawa.ca">Fufs</maintainer>
+  <license>TODO: License declaration</license>
+
+  <!-- Hardware interface -->
+  <depend>hardware_interface</depend>
+  <depend>pluginlib</depend>
+  <depend>rclcpp</depend>
+  <depend>rclcpp_lifecycle</depend>
+  <depend>Protobuf</depend>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>ros2launch</exec_depend>
+  <exec_depend>xacro</exec_depend>
+  
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>ros2_control</exec_depend>
+  <exec_depend>diff_drive_controller</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>joint_state_broadcaster</exec_depend>
+  
+  <test_depend>rviz2</test_depend>
+  <test_depend>joint_state_publisher_gui</test_depend>
+  <test_depend>ros_gz</test_depend>
+  <test_depend>gz_ros2_control</test_depend>
+  <test_depend>joy</test_depend>
+
+  <!-- Hardware interface test -->
+  <test_depend>ament_cmake_gmock</test_depend>
+  <test_depend>hardware_interface</test_depend>
+  
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

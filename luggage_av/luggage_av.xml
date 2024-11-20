@@ -1,0 +1,5 @@
+<library path="luggage_av">
+    <class name="luggage_av/LuggageAVHardawreInterface" type="luggage_av::LuggageAVHardawreInterface" base_class_type="hardware_interface::SystemInterface">
+        <description>Autonomous differential drive bot using ros2_control's system interface.</description>
+    </class>
+</library>

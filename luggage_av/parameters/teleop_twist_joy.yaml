@@ -1,0 +1,15 @@
+luggage_av:
+  teleop_node:
+    ros__parameters:
+      require_enable_button: True
+      enable_button: 0
+      enable_turbo_button: 10
+      axis_linear.x: 1
+      scale_linear.x: 0.5
+      scale_linear_turbo: 1.0
+      axis_angular.yaw: 0
+      scale_angular.yaw: 0.5
+      scale_angular_turbo.yaw: 1.0
+      inverted_reverse: False
+      publish_stamped_twist: True
+      frame: "teleop_twist_joy"
